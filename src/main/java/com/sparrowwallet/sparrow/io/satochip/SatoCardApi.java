@@ -173,11 +173,13 @@ public class SatoCardApi extends CardApi {
                         String basePath = keystore.getKeyDerivation().getDerivationPath();
                         String extendedPath = signingNode.getDerivationPath().substring(1);
                         fullPath = basePath + extendedPath;
+                        log.debug("SATOCHIP sign() fullPath1= " + fullPath);
                         keystore.getPubKey(signingNode);
                         break;
                     }
                 }
 
+                log.debug("SATOCHIP sign() fullPath2= " + fullPath);
                 psbtInput.sign(new CardPSBTInputSigner(signingNode, fullPath));
             }
         }
